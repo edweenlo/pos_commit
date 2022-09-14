@@ -1,0 +1,135 @@
+:root {
+  --primary-page-color: #3FA7D6;
+  --unfulfillable-bg-color: #EE6352;
+  --fulfillable-bg-color: #59CD90;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .95rem;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  color: var(--primary-page-color);
+  margin: 0;
+}
+h4 {
+  margin-bottom: -10px;
+}
+h4, p {
+  color: var(--primary-page-color);
+}
+
+header {
+  height: 50px;
+  background-color: var(--primary-page-color);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+header .title {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+th,
+td {
+  border: 1px solid silver;
+  padding: 0;
+  margin: 0;
+}
+
+th {
+  color: white;
+  background-color: var(--primary-page-color);
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 50px 0;
+  height: calc(100vh - 150px);
+}
+
+main .column-one {
+  flex: 1;
+}
+
+main .column-two {
+  flex: 7;
+  min-width: 960px;
+}
+
+main .column {
+  padding: 0 20px;
+  overflow-y: scroll;
+}
+
+main .column .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+main .column .inputs label {
+  font-size: 18px;
+  color: var(--primary-page-color);
+  margin-bottom: 10px;
+}
+
+main .column .inputs textarea {
+  outline: none;
+  border: none;
+  border: 2px solid var(--primary-page-color);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+main .column .inputs button {
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--primary-page-color);
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  height: 40px;
+  cursor: pointer;
+  transition: all ease-in-out;
+}
+
+main .column .inputs button:active {
+  transform: scale(0.99);
+}
+
+/* TABLE */
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 13px;
+}
+
+main .column:last-child {
+  border-left: 1px solid silver;
+}
+
+main .column #visualized-data{
+  width: 100%;
+}
+
+main .column #visualized-data tbody tr.red {
+  background-color: var(--unfulfillable-bg-color);
+}
+
+main .column #visualized-data tbody tr.green {
+  background-color: var(--fulfillable-bg-color);
+}
