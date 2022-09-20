@@ -7,7 +7,7 @@ function onDataParseHandler() {
 
     const orders = JSON.parse(dataInput.value);
 
-    let currentOrder = orders[0].order;
+    let currentOrder = orders[0].batch;
 
     let groupByOrderId = {};
 
@@ -16,7 +16,7 @@ function onDataParseHandler() {
 
 
     while (index < orders.length) {
-      if (currentOrder === orders[index].order) {
+      if (currentOrder === orders[index].batch) {
         if (!groupByOrderId[nextOrder + "-" + currentOrder]) {
           groupByOrderId[nextOrder + "-" + currentOrder] = [orders[index]];
         } else {
@@ -25,7 +25,7 @@ function onDataParseHandler() {
 
         index++;
       } else {
-        currentOrder = orders[index].order;
+        currentOrder = orders[index].batch;
         nextOrder++;
       }
     }
@@ -48,6 +48,7 @@ function onDataParseHandler() {
         ) {
           canFulfil = false;
           order.status = "red";
+          
         }
       });
 
@@ -88,7 +89,7 @@ function onDataParseHandler() {
     
 
     for (let index = 0; index < modifiedOrders.length; index++) {
-      const { date, productionorder, batch, location, order, item, description, inventorytype, units, quantity, backordered, committed, qtyconversion, pmtacommit, nonpmtacommit, ohqnow, available, status } =
+      const { date, productionorder, batch, location, workordernum, order, item, description, inventorytype, units, quantity, backordered, committed, qtyconversion, pmtacommit, nonpmtacommit, ohqnow, available, status } =
         modifiedOrders[index];
       
       output += `
@@ -97,6 +98,7 @@ function onDataParseHandler() {
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="productionorder">${productionorder}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="batch">${batch}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="location">${location}</td>
+          <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="workordernum">${workordernum}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="orders">${order}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="item">${item}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="description">${description}</td>
@@ -110,6 +112,7 @@ function onDataParseHandler() {
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="nonpmtacommit">${nonpmtacommit}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="ohqnow">${ohqnow}</td>
           <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="available">${available}</td>
+          <td data-b-a-s="thin" data-fill-color="${status === 'green' ? '59CD90' : status === 'red' ? 'EE6352' : 'ffffff'}" class="schedule">${status === 'green' ? 'true' : 'false'}</td>
         </tr>
       `;
     }
