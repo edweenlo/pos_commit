@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Committable POs</title>
+    <title>The Tool</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
 
   <body>
     <header>
       <div class="title">
-        Committable POs
+        The Tool
       </div>
     </header>
 
@@ -29,21 +29,12 @@
           <button id="download-to-excel-button" onclick="onExcelFileDownload(this.event)">Download Excel File</button>
         </div>
         <div>
-          <h4>Summary</h4>
-          <p id="totalorders" class="summary-item">
-            Populates when data is parsed.
-            <!--filled in with javascript-->
-          </p>
           <p id="fulfillable" class="summary-item">
             <!--filled in with javascript-->
           </p>
           <p id="totalunfulfillable" class="summary-item">
             <!--filled in with javascript-->
           </p>
-        </div>
-        <div class="explanation">
-          <h4>Details</h4>
-          <p>This tool is meant to help users see which released Work Orders have enough available quantity to be committed. Gives preference to oldest orders first. Orders that can be committed are highlighted GREEN. Items with not enough quantity are RED.</p>
         </div>
       </div>
       <div class="column column-two">
